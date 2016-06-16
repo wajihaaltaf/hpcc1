@@ -1,0 +1,603 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY noveljkp "http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#"
+     xml:base="http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:noveljkp="http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#belongsto -->
+
+    <owl:ObjectProperty rdf:about="&noveljkp;belongsto"/>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#hasdaughter -->
+
+    <owl:ObjectProperty rdf:about="&noveljkp;hasdaughter"/>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#hasfather -->
+
+    <owl:ObjectProperty rdf:about="&noveljkp;hasfather">
+        <rdfs:domain rdf:resource="&noveljkp;Male"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#hasfiance -->
+
+    <owl:ObjectProperty rdf:about="&noveljkp;hasfiance"/>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#hasmother -->
+
+    <owl:ObjectProperty rdf:about="&noveljkp;hasmother">
+        <rdfs:domain rdf:resource="&noveljkp;Female"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#is_available -->
+
+    <owl:ObjectProperty rdf:about="&noveljkp;is_available"/>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#isa -->
+
+    <owl:ObjectProperty rdf:about="&noveljkp;isa"/>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#isaplaceof -->
+
+    <owl:ObjectProperty rdf:about="&noveljkp;isaplaceof"/>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#isfriendof -->
+
+    <owl:ObjectProperty rdf:about="&noveljkp;isfriendof"/>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#written_by -->
+
+    <owl:ObjectProperty rdf:about="&noveljkp;written_by"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Author -->
+
+    <owl:DatatypeProperty rdf:about="&noveljkp;Author"/>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Novel_detail -->
+
+    <owl:DatatypeProperty rdf:about="&noveljkp;Novel_detail"/>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#author_detail -->
+
+    <owl:DatatypeProperty rdf:about="&noveljkp;author_detail">
+        <rdfs:subPropertyOf rdf:resource="&noveljkp;Author"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#author_id -->
+
+    <owl:DatatypeProperty rdf:about="&noveljkp;author_id">
+        <rdfs:subPropertyOf rdf:resource="&noveljkp;Author"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#author_name -->
+
+    <owl:DatatypeProperty rdf:about="&noveljkp;author_name">
+        <rdfs:subPropertyOf rdf:resource="&noveljkp;Author"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#character_id -->
+
+    <owl:DatatypeProperty rdf:about="&noveljkp;character_id">
+        <rdfs:domain rdf:resource="&noveljkp;Person"/>
+        <rdfs:subPropertyOf rdf:resource="&noveljkp;charactors"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#character_name -->
+
+    <owl:DatatypeProperty rdf:about="&noveljkp;character_name">
+        <rdfs:domain rdf:resource="&noveljkp;Person"/>
+        <rdfs:subPropertyOf rdf:resource="&noveljkp;charactors"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#charactor_discription -->
+
+    <owl:DatatypeProperty rdf:about="&noveljkp;charactor_discription">
+        <rdfs:subPropertyOf rdf:resource="&noveljkp;charactors"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#charactors -->
+
+    <owl:DatatypeProperty rdf:about="&noveljkp;charactors"/>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#novel_id -->
+
+    <owl:DatatypeProperty rdf:about="&noveljkp;novel_id">
+        <rdfs:subPropertyOf rdf:resource="&noveljkp;Novel_detail"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#noveldetail -->
+
+    <owl:DatatypeProperty rdf:about="&noveljkp;noveldetail">
+        <rdfs:subPropertyOf rdf:resource="&noveljkp;Novel_detail"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#published_date -->
+
+    <owl:DatatypeProperty rdf:about="&noveljkp;published_date">
+        <rdfs:subPropertyOf rdf:resource="&noveljkp;Novel_detail"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Author -->
+
+    <owl:Class rdf:about="&noveljkp;Author"/>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Availibility -->
+
+    <owl:Class rdf:about="&noveljkp;Availibility">
+        <rdfs:subClassOf rdf:resource="&noveljkp;Publisher"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Female -->
+
+    <owl:Class rdf:about="&noveljkp;Female">
+        <rdfs:subClassOf rdf:resource="&noveljkp;Person"/>
+        <owl:disjointWith rdf:resource="&noveljkp;Male"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#India -->
+
+    <owl:Class rdf:about="&noveljkp;India">
+        <rdfs:subClassOf rdf:resource="&noveljkp;Places"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Male -->
+
+    <owl:Class rdf:about="&noveljkp;Male">
+        <rdfs:subClassOf rdf:resource="&noveljkp;Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Name -->
+
+    <owl:Class rdf:about="&noveljkp;Name">
+        <rdfs:subClassOf rdf:resource="&noveljkp;Author"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Novel -->
+
+    <owl:Class rdf:about="&noveljkp;Novel"/>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Pakistan -->
+
+    <owl:Class rdf:about="&noveljkp;Pakistan">
+        <rdfs:subClassOf rdf:resource="&noveljkp;Places"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Person -->
+
+    <owl:Class rdf:about="&noveljkp;Person">
+        <rdfs:subClassOf rdf:resource="&noveljkp;Novel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Places -->
+
+    <owl:Class rdf:about="&noveljkp;Places">
+        <rdfs:subClassOf rdf:resource="&noveljkp;Novel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Publisher -->
+
+    <owl:Class rdf:about="&noveljkp;Publisher"/>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Publishing_date -->
+
+    <owl:Class rdf:about="&noveljkp;Publishing_date">
+        <rdfs:subClassOf rdf:resource="&noveljkp;Publisher"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Turkey -->
+
+    <owl:Class rdf:about="&noveljkp;Turkey">
+        <rdfs:subClassOf rdf:resource="&noveljkp;Places"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#name -->
+
+    <owl:Class rdf:about="&noveljkp;name">
+        <rdfs:subClassOf rdf:resource="&noveljkp;Novel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#publisher_contactno -->
+
+    <owl:Class rdf:about="&noveljkp;publisher_contactno">
+        <rdfs:subClassOf rdf:resource="&noveljkp;Publishing_date"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#publisher_name -->
+
+    <owl:Class rdf:about="&noveljkp;publisher_name">
+        <rdfs:subClassOf rdf:resource="&noveljkp;Publisher"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Abdul_Rehman_Pasha -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Abdul_Rehman_Pasha">
+        <rdf:type rdf:resource="&noveljkp;Male"/>
+        <owl:sameAs rdf:resource="&noveljkp;Jehan_Sikandar"/>
+        <isa rdf:resource="&noveljkp;Male"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Aliza -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Aliza">
+        <rdf:type rdf:resource="&noveljkp;Female"/>
+        <belongsto rdf:resource="&noveljkp;Amar_bail"/>
+        <isa rdf:resource="&noveljkp;Female"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Amar_bail -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Amar_bail">
+        <rdf:type rdf:resource="&noveljkp;name"/>
+        <isa rdf:resource="&noveljkp;Novel"/>
+        <written_by rdf:resource="&noveljkp;Umera_Ahmad"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Author -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Author"/>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Cihan_Sikandar -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Cihan_Sikandar">
+        <rdf:type rdf:resource="&noveljkp;Male"/>
+        <owl:sameAs rdf:resource="&noveljkp;Jehan_Sikandar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Erum -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Erum">
+        <rdf:type rdf:resource="&noveljkp;Female"/>
+        <isa rdf:resource="&noveljkp;Female"/>
+        <belongsto rdf:resource="&noveljkp;Jannat_kay_pattay"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Fatima -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Fatima">
+        <isa rdf:resource="&noveljkp;Female"/>
+        <belongsto rdf:resource="&noveljkp;Jannat_kay_pattay"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Female -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Female">
+        <rdf:type rdf:resource="&noveljkp;Female"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#HayaSuleman -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;HayaSuleman">
+        <rdf:type rdf:resource="&noveljkp;Female"/>
+        <character_id rdf:datatype="&xsd;integer">1</character_id>
+        <character_name rdf:datatype="&xsd;string">Haya Suleman</character_name>
+        <isa rdf:resource="&noveljkp;Female"/>
+        <belongsto rdf:resource="&noveljkp;Jannat_kay_pattay"/>
+        <owl:sameAs rdf:resource="&noveljkp;haya"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Istanbol -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Istanbol">
+        <rdf:type rdf:resource="&noveljkp;Turkey"/>
+        <isaplaceof rdf:resource="&noveljkp;Jannat_kay_pattay"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Jannat_kay_pattay -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Jannat_kay_pattay">
+        <rdf:type rdf:resource="&noveljkp;name"/>
+        <noveldetail rdf:datatype="&xsd;string">Jannat Kay Pattay is a Socio Romantic Urdu Novel by Story Writer &amp; Novelist Nemrah Ahmed. Jannat Ke Pattay is a story of Courage, Reality, Struggle and Faith which makes Novel Reader Thrilled, Fascinated and Awed. The leading character Haya Salman, LLB Hons Student, a girl who initially has made an impression of a very Modern Girl, faced an amusing turning point in her life when she got a scholarship from a Turkish University and some body uploaded her personal video of a family function on Internet. As she belongs to a Conventional Family, she contacted an Cybercrime Division Officer Major Ahmed but she was astonished that he knows her very well. The author has beautifully blended Romance, Loyalty, Care, Hospitality, Suspense Thriller Treasure Hunting and Sacrifice along with Enmity, Wrath and Fear with a beautiful and memorable Message for her all readers, that we all make several faults in our life n remain unaware of them, but when Allah ta&apos;la decides to make us to repent n learn of our deeds, HE assess us on the basis of taking the sacrifice of our most dear thing.</noveldetail>
+        <written_by rdf:resource="&noveljkp;Nimra_Ahmed"/>
+        <isa rdf:resource="&noveljkp;Novel"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Jehan_Sikandar -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Jehan_Sikandar">
+        <rdf:type rdf:resource="&noveljkp;Male"/>
+        <belongsto rdf:resource="&noveljkp;Jannat_kay_pattay"/>
+        <isa rdf:resource="&noveljkp;Male"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Khadija -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Khadija">
+        <rdf:type rdf:resource="&noveljkp;Female"/>
+        <character_name rdf:datatype="&xsd;string">Khadija Jehan</character_name>
+        <charactor_discription rdf:datatype="&xsd;string">Khadija is the daughter of Jehan Sikandar and Haya Suleman. She is blah blah blah</charactor_discription>
+        <isa rdf:resource="&noveljkp;Female"/>
+        <belongsto rdf:resource="&noveljkp;Jannat_kay_pattay"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Lahore -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Lahore">
+        <rdf:type rdf:resource="&noveljkp;Pakistan"/>
+        <isaplaceof rdf:resource="&noveljkp;Amar_bail"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Male -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Male">
+        <rdf:type rdf:resource="&noveljkp;Male"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Nimra_Ahmed -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Nimra_Ahmed">
+        <rdf:type rdf:resource="&noveljkp;Name"/>
+        <author_id rdf:datatype="&xsd;string">2</author_id>
+        <author_name rdf:datatype="&xsd;string">Nemrah Ahmed</author_name>
+        <author_detail rdf:datatype="&xsd;string">Nemrah Ahmed[1]) (Urdu: نمرہ احمد‎) is a young, famous Pakistani novelist.From love story to Novels relating with Quran she has written master pieces.She has a very different and unique style.She is among most famous Pakistani Writers/Novelists.She is one of the most versatile writers.
+Her Best seller was  : Jannat Kay Pattay. Her novels include social and moral lessons.
+Her writings involve a touch of Quran which makes her novels much more beautiful and interesting.</author_detail>
+        <isa rdf:resource="&noveljkp;Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Novel -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Novel"/>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Peer_e_Kamil -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Peer_e_Kamil">
+        <rdf:type rdf:resource="&noveljkp;name"/>
+        <noveldetail rdf:datatype="&xsd;string">Pir-e-Kamil (or Peer-e-Kamil)(Urdu: پیر کامل صلی اللہ علیہ و آلہ و سلم‎) meaning The Perfect Mentor, is a novel written by Pakistani writer Umera Ahmad. It was first published in Urdu in 2004 and later in English in 2011. The book deals with the turning points in intervening lives of two people: a runaway girl named Imama Hashim; and a boy named Salar Sikander with an IQ of more than 150. The story spans a time period of around ten years. It is Ahmad&apos;s most popular work. It is followed by a sequel Aab-e-Hayat.</noveldetail>
+        <isa rdf:resource="&noveljkp;Novel"/>
+        <written_by rdf:resource="&noveljkp;Umera_Ahmad"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Salar_sikandar -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Salar_sikandar">
+        <rdf:type rdf:resource="&noveljkp;Male"/>
+        <belongsto rdf:resource="&noveljkp;Peer_e_Kamil"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Suleman -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Suleman">
+        <rdf:type rdf:resource="&noveljkp;Male"/>
+        <belongsto rdf:resource="&noveljkp;Jannat_kay_pattay"/>
+        <isa rdf:resource="&noveljkp;Male"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Taqsam -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Taqsam">
+        <rdf:type rdf:resource="&noveljkp;Turkey"/>
+        <isaplaceof rdf:resource="&noveljkp;Jannat_kay_pattay"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Umama -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Umama">
+        <rdf:type rdf:resource="&noveljkp;Female"/>
+        <belongsto rdf:resource="&noveljkp;Peer_e_Kamil"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Umar_Jahangir -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Umar_Jahangir">
+        <rdf:type rdf:resource="&noveljkp;Male"/>
+        <belongsto rdf:resource="&noveljkp;Amar_bail"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Umera_Ahmad -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Umera_Ahmad">
+        <rdf:type rdf:resource="&noveljkp;Name"/>
+        <author_id rdf:datatype="&xsd;string">1</author_id>
+        <author_name rdf:datatype="&xsd;string">Umera Ahmad</author_name>
+        <author_detail rdf:datatype="&xsd;string">Umera Ahmad (Urdu: عمیرہ احمد‎) (born December 10, 1976) is a Pakistani author and screenwriter. She is known for authoring books like Pir-e-Kamil and Lahasil. She has received various awards including &apos;Best Writer Award&apos; in Lux Style Award for the drama serial Meri Zaat Zara-e-Benishan.</author_detail>
+        <isa rdf:resource="&noveljkp;Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Zara -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Zara">
+        <rdf:type rdf:resource="&noveljkp;Female"/>
+        <isa rdf:resource="&noveljkp;Female"/>
+        <isfriendof rdf:resource="&noveljkp;HayaSuleman"/>
+        <belongsto rdf:resource="&noveljkp;Jannat_kay_pattay"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#haya -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;haya">
+        <isa rdf:resource="&noveljkp;Female"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
