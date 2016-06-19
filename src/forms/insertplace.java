@@ -5,6 +5,10 @@
  */
 package forms;
 
+import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.query.Query;
@@ -14,6 +18,25 @@ import org.apache.jena.query.QueryFactory;
 import org.apache.jena.query.ResultSetFormatter;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.util.FileManager;
+import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.io.RDFXMLOntologyFormat;
+import org.semanticweb.owlapi.model.AddAxiom;
+import org.semanticweb.owlapi.model.IRI;
+import org.semanticweb.owlapi.model.OWLAxiom;
+import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.OWLClassAssertionAxiom;
+import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.semanticweb.owlapi.model.OWLDataProperty;
+import org.semanticweb.owlapi.model.OWLIndividual;
+import org.semanticweb.owlapi.model.OWLNamedIndividual;
+import org.semanticweb.owlapi.model.OWLObjectProperty;
+import org.semanticweb.owlapi.model.OWLObjectPropertyAssertionAxiom;
+import org.semanticweb.owlapi.model.OWLOntology;
+import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.semanticweb.owlapi.model.OWLOntologyStorageException;
+import org.semanticweb.owlapi.model.PrefixManager;
+import org.semanticweb.owlapi.util.DefaultPrefixManager;
 
 /**
  *
@@ -27,6 +50,7 @@ public class insertplace extends javax.swing.JFrame {
     public insertplace() {
         initComponents();
            shower();
+           detailer();
     }
 
     /**
@@ -40,20 +64,23 @@ public class insertplace extends javax.swing.JFrame {
 
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jComboBox2 = new javax.swing.JComboBox();
+        jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(742, 478));
-        setMinimumSize(new java.awt.Dimension(742, 478));
-        setPreferredSize(new java.awt.Dimension(742, 478));
+        setMaximumSize(new java.awt.Dimension(760, 530));
+        setMinimumSize(new java.awt.Dimension(760, 530));
+        setPreferredSize(new java.awt.Dimension(760, 530));
         getContentPane().setLayout(null);
 
         jLabel3.setFont(new java.awt.Font("Khmer UI", 1, 36)); // NOI18N
@@ -69,34 +96,39 @@ public class insertplace extends javax.swing.JFrame {
         getContentPane().add(jLabel6);
         jLabel6.setBounds(50, 100, 170, 50);
 
-        jLabel2.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
-        jLabel2.setText("Place Belongs to:");
-        jLabel2.setToolTipText("");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(60, 160, 120, 50);
-
         jLabel4.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
         jLabel4.setText("Enter Place Discription:");
         jLabel4.setToolTipText("");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(30, 220, 160, 50);
+        jLabel4.setBounds(50, 280, 160, 50);
         getContentPane().add(jTextField1);
         jTextField1.setBounds(220, 100, 350, 40);
 
         getContentPane().add(jComboBox1);
         jComboBox1.setBounds(220, 160, 350, 40);
 
+        jLabel2.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
+        jLabel2.setText("Count:ry:");
+        jLabel2.setToolTipText("");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(110, 220, 70, 50);
+
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(220, 230, 350, 160);
+        jScrollPane1.setBounds(220, 290, 350, 130);
 
         jButton1.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
         jButton1.setText("INSERT");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
-        jButton1.setBounds(130, 410, 230, 50);
+        jButton1.setBounds(110, 440, 230, 50);
 
         jButton3.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
         jButton3.setText("BACK");
@@ -107,11 +139,26 @@ public class insertplace extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(400, 410, 210, 50);
+        jButton3.setBounds(390, 440, 210, 50);
+
+        getContentPane().add(jComboBox2);
+        jComboBox2.setBounds(220, 220, 350, 40);
+
+        jLabel5.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
+        jLabel5.setText("Place Belongs to:");
+        jLabel5.setToolTipText("");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(60, 160, 120, 50);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/forms/7.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 890, 520);
+
+        jLabel7.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
+        jLabel7.setText("Place Belongs to:");
+        jLabel7.setToolTipText("");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(50, 160, 120, 50);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -138,11 +185,93 @@ java.io.ByteArrayOutputStream baos= new java.io.ByteArrayOutputStream();
        }
             jComboBox1.addItem(lastOne);
     }
+public void detailer()
+    {
+         OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF);
+FileManager.get().readModel( model, "jkp.owl" );
+String queryString ="prefix uni: <http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#> \n" +
+"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n" +
+"select ?class\n" +
+"WHERE {?class rdfs:subClassOf uni:Places }";
+Query query = QueryFactory.create(queryString);
+QueryExecution qe= QueryExecutionFactory.create(query, model);
+org.apache.jena.query.ResultSet resultset = qe.execSelect();
+java.io.ByteArrayOutputStream baos= new java.io.ByteArrayOutputStream();
+            ResultSetFormatter.outputAsCSV(baos, resultset);
+            String answer= baos.toString();
+           answer= java.util.Arrays.toString(answer.split("http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#"));
+       String[]  array = answer.split(",");
+       String lastOne = array[array.length-1];
+       lastOne=lastOne.substring(0,lastOne.length()-1);
+       for(int i=1;i<array.length-1;i++)
+       {
+       
+           jComboBox2.addItem(array[i]);
+       }
+            jComboBox2.addItem("Other");
+    }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       admin s=new admin();
+       Insertion s=new Insertion();
         s.setVisible(true);
       insertplace.this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+   String discription= jTextArea1.getText();
+       String nameofplace= jTextField1.getText();
+       String author= (String) jComboBox1.getSelectedItem();
+        String country= (String) jComboBox2.getSelectedItem();
+       if(discription.equals("") || "".equals(nameofplace) || "".equals(author) || "".equals(country))
+       {
+           JOptionPane.showMessageDialog(null, "Enter all fields");
+       }
+      else {
+        
+           try {
+           if("Other".equals(country)){
+country = JOptionPane.showInputDialog("Country:");}
+           nameofplace= nameofplace.replaceAll("\\s+","_");
+               author= author.replaceAll("\\s+","");
+               country=country.replaceAll("\\s+","");
+               IRI ontologyIRI = IRI.create("http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl");
+               OWLOntologyManager man = OWLManager.createOWLOntologyManager();
+               OWLOntology ontology = man.loadOntologyFromOntologyDocument(new File("jkp.owl"));
+               OWLDataFactory factory = man.getOWLDataFactory();
+               PrefixManager pm = new DefaultPrefixManager(ontologyIRI+"#");
+OWLClass person = factory.getOWLClass(":Places", pm);
+OWLClass woman = factory.getOWLClass(IRI.create(ontologyIRI + "#"+country));
+           man.addAxiom(ontology, factory.getOWLSubClassOfAxiom(woman, person));
+               OWLNamedIndividual authorname = factory.getOWLNamedIndividual(":"+nameofplace, pm);
+//insert with adding type:
+               OWLClassAssertionAxiom classAssertion = factory.getOWLClassAssertionAxiom(woman, authorname);
+               man.addAxiom(ontology, classAssertion);
+              OWLObjectProperty isa = factory.getOWLObjectProperty(IRI
+                       .create(ontologyIRI + "#isaplaceof"));
+              
+               OWLIndividual athname = factory.getOWLNamedIndividual(IRI
+            .create(ontologyIRI + "#"+author));
+               OWLObjectPropertyAssertionAxiom axiom1 = factory
+                       .getOWLObjectPropertyAssertionAxiom(isa, authorname, athname);
+               AddAxiom addAxiom1 = new AddAxiom(ontology, axiom1);
+               man.applyChange(addAxiom1);
+                
+               
+                OWLDataProperty author_detail = factory.getOWLDataProperty(IRI.create(ontologyIRI + "#placedetail"));
+               // We create a data property assertion
+               
+                OWLAxiom axiom5 = factory.getOWLDataPropertyAssertionAxiom(author_detail,authorname ,discription);
+               man.applyChange(new AddAxiom(ontology, axiom5));
+               man.saveOntology(ontology, new RDFXMLOntologyFormat());
+               jTextArea1.setText("");
+       jTextField1.setText("");
+           } catch (OWLOntologyCreationException ex) {
+               Logger.getLogger(insertauthor.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (OWLOntologyStorageException ex) {
+               Logger.getLogger(insertauthor.class.getName()).log(Level.SEVERE, null, ex);
+           }
+   
+       }        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,11 +312,14 @@ java.io.ByteArrayOutputStream baos= new java.io.ByteArrayOutputStream();
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;

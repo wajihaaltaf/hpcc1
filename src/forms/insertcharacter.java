@@ -5,6 +5,13 @@
  */
 package forms;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.query.Query;
@@ -12,9 +19,30 @@ import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
 import org.apache.jena.query.QueryFactory;
 import org.apache.jena.query.ResultSetFormatter;
+import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.Resource;
+import static org.apache.jena.tdb.sys.FileRef.file;
 import org.apache.jena.util.FileManager;
-
+import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.io.RDFXMLOntologyFormat;
+import org.semanticweb.owlapi.model.AddAxiom;
+import org.semanticweb.owlapi.model.IRI;
+import org.semanticweb.owlapi.model.OWLAxiom;
+import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.OWLClassAssertionAxiom;
+import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.semanticweb.owlapi.model.OWLDataProperty;
+import org.semanticweb.owlapi.model.OWLIndividual;
+import org.semanticweb.owlapi.model.OWLNamedIndividual;
+import org.semanticweb.owlapi.model.OWLObjectProperty;
+import org.semanticweb.owlapi.model.OWLObjectPropertyAssertionAxiom;
+import org.semanticweb.owlapi.model.OWLOntology;
+import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.semanticweb.owlapi.model.OWLOntologyStorageException;
+import org.semanticweb.owlapi.model.PrefixManager;
+import org.semanticweb.owlapi.util.DefaultPrefixManager;
 /**
  *
  * @author Bisma
@@ -24,11 +52,12 @@ public class insertcharacter extends javax.swing.JFrame {
     /**
      * Creates new form insertcharacter
      */
+    String gender;
     public insertcharacter() {
         initComponents();
         shower();
     }
- public void shower()
+void shower()
     {
          OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM_MICRO_RULE_INF);
 FileManager.get().readModel( model, "jkp.owl" );
@@ -115,10 +144,20 @@ java.io.ByteArrayOutputStream baos= new java.io.ByteArrayOutputStream();
         jTextField1.setBounds(230, 130, 350, 40);
 
         jCheckBox1.setText("Male");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jCheckBox1);
         jCheckBox1.setBounds(240, 180, 81, 23);
 
         jCheckBox2.setText("Female");
+        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jCheckBox2);
         jCheckBox2.setBounds(340, 180, 140, 23);
 
@@ -134,6 +173,11 @@ java.io.ByteArrayOutputStream baos= new java.io.ByteArrayOutputStream();
 
         jButton1.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
         jButton1.setText("INSERT");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
         jButton1.setBounds(130, 410, 230, 50);
 
@@ -156,10 +200,100 @@ java.io.ByteArrayOutputStream baos= new java.io.ByteArrayOutputStream();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       admin s=new admin();
+       Insertion s=new Insertion();
         s.setVisible(true);
       insertcharacter.this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         String discription= jTextArea1.getText();
+       String nameofchar= jTextField1.getText();
+       String author= (String) jComboBox1.getSelectedItem();
+      if(discription.equals("") || "".equals(nameofchar) || "".equals(author) || "".equals(gender) )
+       {
+           JOptionPane.showMessageDialog(null, "Enter all fields");
+       }
+         else {
+        
+           try {
+               nameofchar= nameofchar.replaceAll("\\s+","_");
+               author= author.replaceAll("\\s+","");
+               gender= gender.replaceAll("\\s+","");
+               System.out.println(gender);
+               IRI ontologyIRI = IRI.create("http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl");
+               OWLOntologyManager man = OWLManager.createOWLOntologyManager();
+               OWLOntology ontology = man.loadOntologyFromOntologyDocument(new File("jkp.owl"));
+               OWLDataFactory factory = man.getOWLDataFactory();
+               PrefixManager pm = new DefaultPrefixManager(ontologyIRI+"#");
+OWLClass person = factory.getOWLClass(":Novel", pm);
+OWLClass woman = factory.getOWLClass(IRI.create(ontologyIRI + "#Character"));
+           man.addAxiom(ontology, factory.getOWLSubClassOfAxiom(woman, person));
+           OWLClass Male = factory.getOWLClass(IRI.create(ontologyIRI + "#Male"));
+            OWLClass Female = factory.getOWLClass(IRI.create(ontologyIRI + "#Female"));
+        man.addAxiom(ontology, factory.getOWLSubClassOfAxiom(Male, woman));
+         man.addAxiom(ontology, factory.getOWLSubClassOfAxiom(Female, woman));
+          
+           
+               OWLNamedIndividual authorname = factory.getOWLNamedIndividual(":"+nameofchar, pm);
+//insert with adding type:
+               
+               OWLClassAssertionAxiom classAssertion;
+               if("MALE".equals(gender)){
+               classAssertion = factory.getOWLClassAssertionAxiom(Male, authorname);
+               }
+               else {
+               classAssertion = factory.getOWLClassAssertionAxiom(Female, authorname);
+               }
+               
+               man.addAxiom(ontology, classAssertion);
+              OWLObjectProperty isa = factory.getOWLObjectProperty(IRI
+                       .create(ontologyIRI + "#isa"));
+              OWLObjectProperty writtenby = factory.getOWLObjectProperty(IRI
+                       .create(ontologyIRI + "#belongsto"));
+               OWLIndividual novel = factory.getOWLNamedIndividual(IRI
+            .create(ontologyIRI + "#"+gender));
+               OWLIndividual athname = factory.getOWLNamedIndividual(IRI
+            .create(ontologyIRI + "#"+author));
+               OWLObjectPropertyAssertionAxiom axiom1 = factory
+                       .getOWLObjectPropertyAssertionAxiom(isa, authorname, novel);
+               AddAxiom addAxiom1 = new AddAxiom(ontology, axiom1);
+               man.applyChange(addAxiom1);
+                 OWLObjectPropertyAssertionAxiom axiom2 = factory
+                       .getOWLObjectPropertyAssertionAxiom(writtenby, authorname, athname);
+               AddAxiom addAxiom2 = new AddAxiom(ontology, axiom2);
+               man.applyChange(addAxiom2);
+               OWLDataProperty char_detail = factory.getOWLDataProperty(IRI.create(ontologyIRI + "#character_discription"));
+                OWLDataProperty char_name = factory.getOWLDataProperty(IRI.create(ontologyIRI + "#character_name"));
+               // We create a data property assertion
+               OWLAxiom axiom4 = factory.getOWLDataPropertyAssertionAxiom(char_detail,authorname , discription);
+               man.applyChange(new AddAxiom(ontology, axiom4));
+                OWLAxiom axiom5 = factory.getOWLDataPropertyAssertionAxiom(char_name,authorname ,nameofchar);
+               man.applyChange(new AddAxiom(ontology, axiom5));
+               man.saveOntology(ontology, new RDFXMLOntologyFormat());
+               jTextArea1.setText("");
+       jTextField1.setText("");
+           } catch (OWLOntologyCreationException ex) {
+               Logger.getLogger(insertauthor.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (OWLOntologyStorageException ex) {
+               Logger.getLogger(insertauthor.class.getName()).log(Level.SEVERE, null, ex);
+           }
+   
+       }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+       if (jCheckBox1.isSelected()) {
+            jCheckBox2.setSelected(false);
+            gender =jCheckBox1.getText();
+        }
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+       if (jCheckBox2.isSelected()) {
+            jCheckBox1.setSelected(false);
+            gender =jCheckBox2.getText(); 
+        }
+    }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     /**
      * @param args the command line arguments

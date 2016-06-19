@@ -9,12 +9,12 @@ package forms;
  *
  * @author Bisma
  */
-public class admin extends javax.swing.JFrame {
+public class Deletion extends javax.swing.JFrame {
 
     /**
-     * Creates new form admin
+     * Creates new form Deletion
      */
-    public admin() {
+    public Deletion() {
         initComponents();
     }
 
@@ -27,120 +27,114 @@ public class admin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Khmer UI", 1, 36)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/5.jpg"))); // NOI18N
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(656, 416));
+        setMinimumSize(new java.awt.Dimension(656, 416));
+        setPreferredSize(new java.awt.Dimension(656, 416));
+        getContentPane().setLayout(null);
+
+        jLabel3.setFont(new java.awt.Font("Khmer UI", 1, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(153, 51, 0));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("NOVEL MANIA");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(-40, 0, 700, 70);
 
         jButton1.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
-        jButton1.setText("SEARCH WITH AUTHOR NAME");
+        jButton1.setText("DELETE AN AUTHOR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(750, 440));
-        setMinimumSize(new java.awt.Dimension(750, 440));
-        setPreferredSize(new java.awt.Dimension(750, 440));
-        getContentPane().setLayout(null);
-
-        jLabel3.setFont(new java.awt.Font("Khmer UI", 1, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("NOVEL MANIA");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 4, 780, 70);
+        getContentPane().add(jButton1);
+        jButton1.setBounds(150, 90, 320, 40);
 
         jButton2.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
-        jButton2.setText("INSERT");
+        jButton2.setText("DELETE NOVEL");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(230, 120, 330, 50);
-
-        jButton3.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
-        jButton3.setText("UPDATE");
-        jButton3.setMaximumSize(new java.awt.Dimension(235, 25));
-        jButton3.setMinimumSize(new java.awt.Dimension(235, 25));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton3);
-        jButton3.setBounds(230, 270, 330, 50);
+        jButton2.setBounds(150, 140, 320, 40);
 
         jButton4.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
-        jButton4.setText("EXIT");
-        jButton4.setMaximumSize(new java.awt.Dimension(235, 25));
-        jButton4.setMinimumSize(new java.awt.Dimension(235, 25));
+        jButton4.setText("DELETE CHARACTER");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(230, 340, 330, 50);
+        jButton4.setBounds(150, 190, 320, 40);
 
         jButton5.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
-        jButton5.setText("DELETE");
-        jButton5.setMaximumSize(new java.awt.Dimension(235, 25));
-        jButton5.setMinimumSize(new java.awt.Dimension(235, 25));
+        jButton5.setText("DELETE PLACE");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton5);
-        jButton5.setBounds(230, 190, 330, 50);
+        jButton5.setBounds(150, 240, 320, 40);
 
-        jLabel2.setFont(new java.awt.Font("Khmer UI", 1, 36)); // NOI18N
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/5.jpg"))); // NOI18N
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 780, 470);
+        jButton3.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
+        jButton3.setText("EXIT");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3);
+        jButton3.setBounds(150, 290, 320, 40);
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Bisma\\Documents\\NetBeansProjects\\OntologyNovel\\images\\10.jpg")); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 664, 420);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
+        deleteauthor s=new deleteauthor();
+        s.setVisible(true);
+       Deletion.this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Insertion s= new  Insertion();
+        deletenovel s=new deletenovel();
         s.setVisible(true);
-        admin.this.setVisible(false);
+         Deletion.this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
- Updation s= new  Updation();
-        s.setVisible(true);
-        admin.this.setVisible(false);        
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        Mainpage s= new Mainpage();
+        deletecharactor s=new deletecharactor();
         s.setVisible(true);
-        admin.this.setVisible(false);
+         Deletion.this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        Deletion s= new  Deletion();
+        deleteplace s=new deleteplace();
         s.setVisible(true);
-        admin.this.setVisible(false);
+        Deletion.this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        admin s=new admin();
+        s.setVisible(true);
+        Deletion.this.setVisible(false);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,20 +153,20 @@ public class admin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Deletion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Deletion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Deletion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(admin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Deletion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new admin().setVisible(true);
+                new Deletion().setVisible(true);
             }
         });
     }
@@ -184,7 +178,6 @@ public class admin extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

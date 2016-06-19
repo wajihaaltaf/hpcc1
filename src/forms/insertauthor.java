@@ -5,6 +5,33 @@
  */
 package forms;
 
+
+import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.io.OWLXMLOntologyFormat;
+import org.semanticweb.owlapi.io.RDFXMLOntologyFormat;
+import org.semanticweb.owlapi.model.AddAxiom;
+import org.semanticweb.owlapi.model.IRI;
+import org.semanticweb.owlapi.model.OWLAxiom;
+import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.OWLClassAssertionAxiom;
+import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.semanticweb.owlapi.model.OWLDataProperty;
+import org.semanticweb.owlapi.model.OWLDeclarationAxiom;
+import org.semanticweb.owlapi.model.OWLIndividual;
+import org.semanticweb.owlapi.model.OWLNamedIndividual;
+import org.semanticweb.owlapi.model.OWLObjectProperty;
+import org.semanticweb.owlapi.model.OWLObjectPropertyAssertionAxiom;
+import org.semanticweb.owlapi.model.OWLOntology;
+import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.semanticweb.owlapi.model.OWLOntologyStorageException;
+import org.semanticweb.owlapi.model.PrefixManager;
+import org.semanticweb.owlapi.util.DefaultPrefixManager;
+
 /**
  *
  * @author Bisma
@@ -72,6 +99,11 @@ public class insertauthor extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Khmer UI", 1, 14)); // NOI18N
         jButton1.setText("INSERT");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
         jButton1.setBounds(180, 390, 230, 50);
 
@@ -93,12 +125,64 @@ public class insertauthor extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+   private static Object ProtegeOWL;
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-     admin s=new admin();
+     Insertion s=new Insertion();
         s.setVisible(true);
       insertauthor.this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       String discription= jTextArea1.getText();
+       String nameofauthor= jTextField1.getText();
+       
+       if(discription.equals("") || nameofauthor == "" )
+       {
+           JOptionPane.showMessageDialog(null, "Enter all fields");
+       }
+       else {
+        
+           try {
+               nameofauthor= nameofauthor.replaceAll("\\s+","_");
+               IRI ontologyIRI = IRI.create("http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl");
+               OWLOntologyManager man = OWLManager.createOWLOntologyManager();
+               OWLOntology ontology = man.loadOntologyFromOntologyDocument(new File("jkp.owl"));
+               OWLDataFactory factory = man.getOWLDataFactory();
+               PrefixManager pm = new DefaultPrefixManager(ontologyIRI+"#");
+OWLClass person = factory.getOWLClass(":Author", pm);
+OWLClass woman = factory.getOWLClass(IRI.create(ontologyIRI + "#Name"));
+           man.addAxiom(ontology, factory.getOWLSubClassOfAxiom(woman, person));
+               OWLNamedIndividual authorname = factory.getOWLNamedIndividual(":"+nameofauthor, pm);
+//insert with adding type:
+               OWLClassAssertionAxiom classAssertion = factory.getOWLClassAssertionAxiom(woman, authorname);
+               man.addAxiom(ontology, classAssertion);
+              OWLObjectProperty isa = factory.getOWLObjectProperty(IRI
+                       .create(ontologyIRI + "#isa"));
+               OWLIndividual author = factory.getOWLNamedIndividual(IRI
+            .create(ontologyIRI + "#Author"));
+               OWLObjectPropertyAssertionAxiom axiom1 = factory
+                       .getOWLObjectPropertyAssertionAxiom(isa, authorname, author);
+               AddAxiom addAxiom1 = new AddAxiom(ontology, axiom1);
+               man.applyChange(addAxiom1);
+               OWLDataProperty author_name = factory.getOWLDataProperty(IRI.create(ontologyIRI + "#author_name"));
+                OWLDataProperty author_detail = factory.getOWLDataProperty(IRI.create(ontologyIRI + "#author_detail"));
+               // We create a data property assertion
+               OWLAxiom axiom4 = factory.getOWLDataPropertyAssertionAxiom(author_name,authorname ,nameofauthor );
+               man.applyChange(new AddAxiom(ontology, axiom4));
+                OWLAxiom axiom5 = factory.getOWLDataPropertyAssertionAxiom(author_detail,authorname ,discription);
+               man.applyChange(new AddAxiom(ontology, axiom5));
+               man.saveOntology(ontology, new RDFXMLOntologyFormat());
+               jTextArea1.setText("");
+       jTextField1.setText("");
+           } catch (OWLOntologyCreationException ex) {
+               Logger.getLogger(insertauthor.class.getName()).log(Level.SEVERE, null, ex);
+           } catch (OWLOntologyStorageException ex) {
+               Logger.getLogger(insertauthor.class.getName()).log(Level.SEVERE, null, ex);
+           }
+   
+       }
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
