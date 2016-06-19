@@ -119,17 +119,15 @@
     
 
 
-    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#author_detail -->
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Places -->
 
-    <owl:DatatypeProperty rdf:about="&noveljkp;author_detail">
-        <rdfs:subPropertyOf rdf:resource="&noveljkp;Author"/>
-    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="&noveljkp;Places"/>
     
 
 
-    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#author_id -->
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#author_detail -->
 
-    <owl:DatatypeProperty rdf:about="&noveljkp;author_id">
+    <owl:DatatypeProperty rdf:about="&noveljkp;author_detail">
         <rdfs:subPropertyOf rdf:resource="&noveljkp;Author"/>
     </owl:DatatypeProperty>
     
@@ -143,12 +141,10 @@
     
 
 
-    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#character_id -->
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#character_discription -->
 
-    <owl:DatatypeProperty rdf:about="&noveljkp;character_id">
-        <rdfs:domain rdf:resource="&noveljkp;Person"/>
+    <owl:DatatypeProperty rdf:about="&noveljkp;character_discription">
         <rdfs:subPropertyOf rdf:resource="&noveljkp;charactors"/>
-        <rdfs:range rdf:resource="&xsd;integer"/>
     </owl:DatatypeProperty>
     
 
@@ -156,17 +152,9 @@
     <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#character_name -->
 
     <owl:DatatypeProperty rdf:about="&noveljkp;character_name">
-        <rdfs:domain rdf:resource="&noveljkp;Person"/>
+        <rdfs:domain rdf:resource="&noveljkp;Character"/>
         <rdfs:subPropertyOf rdf:resource="&noveljkp;charactors"/>
         <rdfs:range rdf:resource="&xsd;string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#charactor_discription -->
-
-    <owl:DatatypeProperty rdf:about="&noveljkp;charactor_discription">
-        <rdfs:subPropertyOf rdf:resource="&noveljkp;charactors"/>
     </owl:DatatypeProperty>
     
 
@@ -189,6 +177,15 @@
 
     <owl:DatatypeProperty rdf:about="&noveljkp;noveldetail">
         <rdfs:subPropertyOf rdf:resource="&noveljkp;Novel_detail"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#placedetail -->
+
+    <owl:DatatypeProperty rdf:about="&noveljkp;placedetail">
+        <rdfs:subPropertyOf rdf:resource="&noveljkp;Places"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
 
@@ -226,10 +223,18 @@
     
 
 
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Character -->
+
+    <owl:Class rdf:about="&noveljkp;Character">
+        <rdfs:subClassOf rdf:resource="&noveljkp;Novel"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Female -->
 
     <owl:Class rdf:about="&noveljkp;Female">
-        <rdfs:subClassOf rdf:resource="&noveljkp;Person"/>
+        <rdfs:subClassOf rdf:resource="&noveljkp;Character"/>
         <owl:disjointWith rdf:resource="&noveljkp;Male"/>
     </owl:Class>
     
@@ -246,7 +251,7 @@
     <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Male -->
 
     <owl:Class rdf:about="&noveljkp;Male">
-        <rdfs:subClassOf rdf:resource="&noveljkp;Person"/>
+        <rdfs:subClassOf rdf:resource="&noveljkp;Character"/>
     </owl:Class>
     
 
@@ -269,14 +274,6 @@
 
     <owl:Class rdf:about="&noveljkp;Pakistan">
         <rdfs:subClassOf rdf:resource="&noveljkp;Places"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Person -->
-
-    <owl:Class rdf:about="&noveljkp;Person">
-        <rdfs:subClassOf rdf:resource="&noveljkp;Novel"/>
     </owl:Class>
     
 
@@ -356,6 +353,17 @@
     
 
 
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Aik_Mohabbat_Aur_Sahi -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Aik_Mohabbat_Aur_Sahi">
+        <rdf:type rdf:resource="&noveljkp;name"/>
+        <noveldetail rdf:datatype="&xsd;string">Aik Mohabbat Aur Sahi Novel Authored By Hashim Nadeem. Aik Mohabbat Aur Sahi is a beautiful novel contains an excellent social romantic true love story in Urdu language. </noveldetail>
+        <written_by rdf:resource="&noveljkp;Hashim_Nadeem"/>
+        <isa rdf:resource="&noveljkp;Novel"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Aliza -->
 
     <owl:NamedIndividual rdf:about="&noveljkp;Aliza">
@@ -418,11 +426,22 @@
     
 
 
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Hashim_Nadeem -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Hashim_Nadeem">
+        <rdf:type rdf:resource="&noveljkp;Name"/>
+        <author_detail rdf:datatype="&xsd;string">Hashim Nadeem(Urdu: ھاشم ندیم‎) is a Pakistani-Urdu novelist, drama writer and fiction writer.[1][citation needed] He is a film producer and director.He has also produced 27 telefilms and 11 drama serials as first private producer, among four of them have won different awards, in which he was also writer and director.[citation needed] His films include Abdullah, and his novels are Bachpan ka December, Khuda Aur Muhabbat, Aik Muhabbat aur sahi, and Muqaddas.
+He has been awarded the Tamgha-e-Husn-e-Karkrdagi[5] by the Pakistani government. He has been also provided with the Bolan Award for the best situation sequential (PTV) for his sequential ‘Sipaahee’. His services have been recently awarded[when?] by &quot;Poona festival award&quot;.</author_detail>
+        <author_name rdf:datatype="&xsd;string">Hashim_Nadeem</author_name>
+        <isa rdf:resource="&noveljkp;Author"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#HayaSuleman -->
 
     <owl:NamedIndividual rdf:about="&noveljkp;HayaSuleman">
         <rdf:type rdf:resource="&noveljkp;Female"/>
-        <character_id rdf:datatype="&xsd;integer">1</character_id>
         <character_name rdf:datatype="&xsd;string">Haya Suleman</character_name>
         <isa rdf:resource="&noveljkp;Female"/>
         <belongsto rdf:resource="&noveljkp;Jannat_kay_pattay"/>
@@ -466,7 +485,7 @@
     <owl:NamedIndividual rdf:about="&noveljkp;Khadija">
         <rdf:type rdf:resource="&noveljkp;Female"/>
         <character_name rdf:datatype="&xsd;string">Khadija Jehan</character_name>
-        <charactor_discription rdf:datatype="&xsd;string">Khadija is the daughter of Jehan Sikandar and Haya Suleman. She is blah blah blah</charactor_discription>
+        <character_discription rdf:datatype="&xsd;string">Khadija is the daughter of Jehan Sikandar and Haya Suleman. She is blah blah blah</character_discription>
         <isa rdf:resource="&noveljkp;Female"/>
         <belongsto rdf:resource="&noveljkp;Jannat_kay_pattay"/>
     </owl:NamedIndividual>
@@ -490,11 +509,21 @@
     
 
 
+    <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Mushaf -->
+
+    <owl:NamedIndividual rdf:about="&noveljkp;Mushaf">
+        <rdf:type rdf:resource="&noveljkp;name"/>
+        <noveldetail rdf:datatype="&xsd;string">Mushaf by Nimra Ahmed is a wonderful story. It is about a girl who added and rely on Quran and got everything in her life.</noveldetail>
+        <written_by rdf:resource="&noveljkp;Nimra_Ahmed"/>
+        <isa rdf:resource="&noveljkp;Novel"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/bisma/ontologies/2016/2/noveljkp.owl#Nimra_Ahmed -->
 
     <owl:NamedIndividual rdf:about="&noveljkp;Nimra_Ahmed">
         <rdf:type rdf:resource="&noveljkp;Name"/>
-        <author_id rdf:datatype="&xsd;string">2</author_id>
         <author_name rdf:datatype="&xsd;string">Nemrah Ahmed</author_name>
         <author_detail rdf:datatype="&xsd;string">Nemrah Ahmed[1]) (Urdu: نمرہ احمد‎) is a young, famous Pakistani novelist.From love story to Novels relating with Quran she has written master pieces.She has a very different and unique style.She is among most famous Pakistani Writers/Novelists.She is one of the most versatile writers.
 Her Best seller was  : Jannat Kay Pattay. Her novels include social and moral lessons.
@@ -571,7 +600,6 @@ Her writings involve a touch of Quran which makes her novels much more beautiful
 
     <owl:NamedIndividual rdf:about="&noveljkp;Umera_Ahmad">
         <rdf:type rdf:resource="&noveljkp;Name"/>
-        <author_id rdf:datatype="&xsd;string">1</author_id>
         <author_name rdf:datatype="&xsd;string">Umera Ahmad</author_name>
         <author_detail rdf:datatype="&xsd;string">Umera Ahmad (Urdu: عمیرہ احمد‎) (born December 10, 1976) is a Pakistani author and screenwriter. She is known for authoring books like Pir-e-Kamil and Lahasil. She has received various awards including &apos;Best Writer Award&apos; in Lux Style Award for the drama serial Meri Zaat Zara-e-Benishan.</author_detail>
         <isa rdf:resource="&noveljkp;Author"/>
